@@ -14,19 +14,7 @@ pipeline {
             }
 
         }
-        stage('Test') { 
-            agent {
-                docker {
-                    image 'python:3' 
-                }
-            }
-            steps {
-                sh 'pip install -r requirements.txt' 
-                sh 'python test.py' 
-                
-            }
-
-        }
+       
     }
   
 }

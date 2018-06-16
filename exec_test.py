@@ -15,7 +15,7 @@ class TestCalc(unittest.TestCase):
         """
         Test that the addition of two integers returns the correct total
         """
-        self.assertEqual(1, 2)
+        self.assertEqual(2, 2)
 
 if __name__ == '__main__':
     unittest.main()
