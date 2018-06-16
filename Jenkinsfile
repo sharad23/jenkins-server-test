@@ -8,8 +8,8 @@ pipeline {
                 }
             }
             steps {
+                sh 'pip install -r requirements.txt' 
                 sh 'python test.py' 
-                sh 'echo abc' 
             }
 
         }
