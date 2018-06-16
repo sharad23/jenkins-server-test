@@ -1,7 +1,22 @@
 pipeline {
     agent none 
     stages {
-        stage('Build') { 
+        stage('Test') { 
+            agent {
+                docker {
+                    image 'python:3' 
+                }
+            }
+            steps {
+                sh 'pip install -r requirements.txt' 
+                // sh 'python test.py' 
+                sh 'python exec_test.py'
+            }
+
+        }
+    }
+    stages {
+        stage('Run') { 
             agent {
                 docker {
                     image 'python:3' 
@@ -10,7 +25,7 @@ pipeline {
             steps {
                 sh 'pip install -r requirements.txt' 
                 sh 'python test.py' 
-                sh 'python exec_test.py'
+                // sh 'python exec_test.py'
             }
 
         }
