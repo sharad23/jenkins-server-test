@@ -17,6 +17,7 @@ class TestCalc(unittest.TestCase):
         """
         self.assertEqual(1, 1)
     
+    
     def test_pizza(self):
         """
         Test that the addition of two integers returns the correct total
