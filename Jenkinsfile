@@ -9,7 +9,9 @@ pipeline {
             }
             steps {
                 sh 'python test.py' 
+                sh 'echo abc' 
             }
+
         }
     }
 }
