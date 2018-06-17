@@ -1,3 +1,8 @@
+
+def CONTAINER_NAME="flask-app"
+def CONTAINER_TAG="latest"
+def HTTP_PORT="5000"
+
 pipeline {
     agent none 
     stages {
@@ -12,20 +17,25 @@ pipeline {
                 sh 'python exec_test.py'
             }
         }
-        
-      
     }
-  
 }
 node {
     stage('Build') {
-        sh 'docker build -t flask-app .' 
+        imagePrune(CONTAINER_NAME)
+        sh "docker build -t $CONTAINER_NAME ."
         
     }
     stage('Deploy'){
-        sh 'docker run -p 5000:5000 -d flask-app'
+        sh "docker run -p $HTTP_PORT:5000 -d $CONTAINER_NAME"
     }
-    stage('Extra'){
-        sh 'docker-compose '
+   
+}
+
+def imagePrune(containerName){
+    try {
+        sh "docker image prune -f"
+        sh "docker stop $containerName"
+    } catch(error){
+
     }
 }
