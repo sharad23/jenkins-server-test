@@ -36,6 +36,6 @@ def imagePrune(containerName){
         sh "docker image prune -f"
         sh "docker stop $containerName"
     } catch(error){
-        sh "echo error"
+        sh "echo $error"
     }
 }
