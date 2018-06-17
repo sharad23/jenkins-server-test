@@ -3,22 +3,22 @@ def CONTAINER_NAME ="wolawitz"
 def CONTAINER_TAG="latest"
 def HTTP_PORT="5000"
 
-pipeline {
-    agent none 
-    stages {
-        stage('Test') { 
-            agent {
-                docker {
-                    image 'python:3' 
-                }
-            }
-            steps {
-                sh 'pip install -r requirements.txt' 
-                sh 'python exec_test.py'
-            }
-        }
-    }
-}
+// pipeline {
+//     agent none 
+//     stages {
+//         stage('Test') { 
+//             agent {
+//                 docker {
+//                     image 'python:3' 
+//                 }
+//             }
+//             steps {
+//                 sh 'pip install -r requirements.txt' 
+//                 sh 'python exec_test.py'
+//             }
+//         }
+//     }
+// }
 node {
     stage('Build') {
         imagePrune(CONTAINER_NAME)
