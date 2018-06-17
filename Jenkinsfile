@@ -15,34 +15,34 @@ pipeline {
             steps {
                 sh 'pip install -r requirements.txt' 
                 sh 'python exec_test.py'
-                sh 'docker version'
+                sh 'git --version'
             }
         }
     }
 }
-// node {
-//     stage('Build') {
-//         imagePrune(CONTAINER_NAME)
-//         sh "docker build -t $IMAGE_NAME ."
+node {
+    stage('Build') {
+        imagePrune(CONTAINER_NAME)
+        sh "docker build -t $IMAGE_NAME ."
         
-//     }
-//     stage('Deploy'){
-//         sh "docker run -p $HTTP_PORT:5000 -d --name=$CONTAINER_NAME  $IMAGE_NAME"
-//     }
+    }
+    stage('Deploy'){
+        sh "docker run -p $HTTP_PORT:5000 -d --name=$CONTAINER_NAME  $IMAGE_NAME"
+    }
     
-//     stage('Compose'){
-//         sh "./exec.sh"
-//     }
+    stage('Compose'){
+        sh "./exec.sh"
+    }
    
-// }
+}
 
-// def imagePrune(containerName){
-//     try {
-//         sh "docker image prune -f"
-//         sh "docker stop $containerName"
-//         sh "docker rm $containerName"
-//     } catch(error){
-//         sh "echo $error"
+def imagePrune(containerName){
+    try {
+        sh "docker image prune -f"
+        sh "docker stop $containerName"
+        sh "docker rm $containerName"
+    } catch(error){
+        sh "echo $error"
     
-//     }
-// }
+    }
+}
