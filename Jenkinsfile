@@ -20,6 +20,9 @@ pipeline {
 node {
     stage('Build') {
         sh 'docker build -t flask-app .' 
-    }
         
+    }
+    stage('Deploy'){
+        sh 'docker run -p 5000:5000 -d flask-app'
+    }
 }
