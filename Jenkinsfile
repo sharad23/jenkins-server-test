@@ -12,12 +12,13 @@ pipeline {
                 sh 'python exec_test.py'
             }
         }
-        stage('Build') {
-           steps {
+        
+        node {
+             stage('Build') {
                 sh 'docker build -t flask-app .' 
             }
+        
         }
-       
     }
   
 }
