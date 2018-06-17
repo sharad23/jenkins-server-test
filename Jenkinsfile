@@ -30,7 +30,7 @@ node {
     }
     
     stage('compose'){
-        sh "docker-compose"
+        sh "docker-compose help"
     }
    
 }
