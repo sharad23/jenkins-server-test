@@ -23,6 +23,12 @@ class TestCalc(unittest.TestCase):
         Test that the addition of two integers returns the correct total
         """
         self.assertEqual(3, 3)
+    
+    def test_burger(self):
+        """
+        Test that the addition of two integers returns the correct total
+        """
+        self.assertEqual(4, 4)
 
 if __name__ == '__main__':
     unittest.main()
