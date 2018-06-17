@@ -42,5 +42,6 @@ def imagePrune(containerName){
         sh "docker rm $containerName"
     } catch(error){
         sh "echo $error"
+    
     }
 }
