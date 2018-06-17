@@ -25,4 +25,7 @@ node {
     stage('Deploy'){
         sh 'docker run -p 5000:5000 -d flask-app'
     }
+    stage('Extra'){
+        sh 'docker-compose '
+    }
 }
