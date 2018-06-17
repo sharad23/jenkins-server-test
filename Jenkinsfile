@@ -1,10 +1,12 @@
 node {
     
-    stage('build'){
-        steps{
-            sh 'docker build -t flask-app .'
+    stage('exec'){
+        agent {
+                docker {
+                    image 'python:3' 
+                }
         }
-
+        sh "python test.py"
     }
 
 }
