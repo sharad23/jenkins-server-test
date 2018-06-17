@@ -13,12 +13,13 @@ pipeline {
             }
         }
         
-        node {
-             stage('Build') {
-                sh 'docker build -t flask-app .' 
-            }
-        
-        }
+      
     }
   
+}
+node {
+    stage('Build') {
+        sh 'docker build -t flask-app .' 
+    }
+        
 }
