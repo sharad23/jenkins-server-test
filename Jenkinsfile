@@ -29,8 +29,8 @@ node {
         sh "docker run -p $HTTP_PORT:5000 -d --name=$CONTAINER_NAME  $IMAGE_NAME"
     }
     
-    stage('compose'){
-        sh "docker-compose help"
+    stage('Compose'){
+        sh "./exec.sh"
     }
    
 }
